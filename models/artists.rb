@@ -26,21 +26,27 @@ class Artist
       ) RETURNING id"
       values = [@name]
       @id = SqlRunner.run(sql,values)[0]['id'].to_i
-  end
+    end
 
-  def self.list
-    sql = "SELECT * from artists"
-    artists = SqlRunner.run(sql)
-    return artists.map {|artist| Artist.new(artist)}
-  end
+    def self.list
+      sql = "SELECT * from artists"
+      artists = SqlRunner.run(sql)
+      return artists.map {|artist| Artist.new(artist)}
+    end
 
-  def albums
-    sql = "SELECT * FROM albums WHERE artist_id = $1"
-    values = [@id]
-    albums = SqlRunner.run(sql, values)
-    return albums.map {|album| Album.new(album)}
-  end
+    def albums
+      sql = "SELECT * FROM albums WHERE artist_id = $1"
+      values = [@id]
+      albums = SqlRunner.run(sql, values)
+      return albums.map {|album| Album.new(album)}
+    end
+
+    def update
+      sql = "UPDATE artists SET name = $1 WHERE id = $2"
+      values = [@name,@id]
+      results = SqlRunner.run(sql,values)
+      return results
+    end
 
 
-  
-end
+  end #class end

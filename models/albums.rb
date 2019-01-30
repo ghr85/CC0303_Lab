@@ -44,6 +44,12 @@ attr_reader :id
     results = SqlRunner.run(sql, values)
     artist_data = results[0]
     return Artist.new(artist_data)
+  end
 
+  def update
+    sql = "UPDATE albums SET (title, genre, artist_id) = ($1, $2, $3) WHERE id= $4"
+    values = [@title,@genre,@artist_id,@id]
+    results = SqlRunner.run(sql,values)
+    return results
   end
 end #class end

@@ -32,6 +32,11 @@ album1 = Album.new({
 album1.save()
 album2.save()
 
+artist_1.name = "Winona and the Bats"
+artist_1.update
+
+album2.title = "Build a Bridge"
+album1.update
 
 Artist.list()
 Album.list()
