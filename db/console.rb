@@ -45,5 +45,6 @@ album1.delete
 
 Artist.list()
 Album.list()
+
 binding.pry
 nil
