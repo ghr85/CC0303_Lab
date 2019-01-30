@@ -5,6 +5,8 @@ require('pry')
 require_relative('../models/albums')
 require_relative('../models/artists')
 
+Album.delete_all()
+Artist.delete_all()
 
 artist_1 = Artist.new({
   'name' => 'Stevie Wonder'
@@ -34,9 +36,12 @@ album2.save()
 
 artist_1.name = "Winona and the Bats"
 artist_1.update
+artist_2.delete
 
 album2.title = "Build a Bridge"
-album1.update
+album2.update
+album1.delete
+
 
 Artist.list()
 Album.list()

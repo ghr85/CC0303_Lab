@@ -52,4 +52,18 @@ attr_reader :id
     results = SqlRunner.run(sql,values)
     return results
   end
+
+  def delete
+    sql = "DELETE FROM albums WHERE id = $1"
+    values = [@id]
+    results = SqlRunner.run(sql,values)
+    return results
+  end
+
+  def self.delete_all
+    sql = "DELETE FROM albums"
+    results = SqlRunner.run(sql)
+    return results
+  end
+
 end #class end
